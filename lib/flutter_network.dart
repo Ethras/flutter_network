@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 class FlutterNetwork {
   static const MethodChannel _channel =
       const MethodChannel('flutter_network');
-  static const EventChannel  _stream  = const EventChannel('"com_ethras_flutter_network/stream"');
+  static const EventChannel  _stream  = EventChannel("com_ethras_flutter_network/stream");
 
   static  Stream<bool> dataRestrictedStateChanged() {
     return _stream.receiveBroadcastStream().map((restricted) => restricted as bool);
