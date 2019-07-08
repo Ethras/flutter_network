@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_network/flutter_network.dart';
 import 'package:http/http.dart' as http;
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -15,7 +17,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    http.get('https://jsonplaceholder.typicode.com/posts/').then((res) => print(res.body));
+    http
+        .get('https://jsonplaceholder.typicode.com/posts/');
+    FlutterNetwork.dataRestrictedStateChanged().listen((restricted) {
+      print("DataRestriction changed : $restricted");
+    });
   }
 
   _checkCellularRestriction() async {
@@ -35,7 +41,10 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: <Widget>[
-              RaisedButton(child: Text("Check cellular restriction"), onPressed: _checkCellularRestriction,),
+              RaisedButton(
+                child: Text("Check cellular restriction"),
+                onPressed: _checkCellularRestriction,
+              ),
               Text('Cellular restriction $isRestricted'),
             ],
           ),

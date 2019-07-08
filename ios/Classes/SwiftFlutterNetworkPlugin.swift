@@ -7,6 +7,7 @@ public class SwiftFlutterNetworkPlugin: NSObject, FlutterPlugin, FlutterStreamHa
     private var eventSink: FlutterEventSink?
     
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+        print("Started listening cellularDataRestricitionStateUpdate")
         eventSink = events;
         return nil
     }
